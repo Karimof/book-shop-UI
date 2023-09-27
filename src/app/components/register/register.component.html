@@ -1,0 +1,12 @@
+<div class="container" align="center" style="padding: 20px">
+  <form #editFrom="ngForm" (ngSubmit)="onSubmit(editFrom.value)" ngNativeValidate
+        style="border: 1px solid black; width: 250px; padding:20px; margin-top: 15%">
+    <p>Sing Up</p>
+    <input type="text" placeholder="Name" name="name" style="padding: 10px" ngModel><br><br>
+    <input type="text" placeholder="Login" name="login" style="padding: 10px" ngModel><br><br>
+    <input type="password" placeholder="Password" name="password" style="padding: 10px" ngModel>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
