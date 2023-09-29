@@ -5,6 +5,7 @@ import {ImageService} from "../../../services/image-service/image.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute,} from "@angular/router";
 import {IBook} from "../../../models/Books-model";
+import {UserPurchasesService} from "../../../services/user-purchases-service/user-purchases.service";
 
 @Component({
   selector: 'app-book-view',
@@ -14,32 +15,38 @@ import {IBook} from "../../../models/Books-model";
 export class BookViewComponent {
 
   booksDTO?: IBookDTO
+  book?: IBook
+  hiddenAlert: boolean
 
   constructor(protected booksService: BooksService,
               protected imageService: ImageService,
+              protected userPurchasesService: UserPurchasesService,
               private sanitizer: DomSanitizer,
               private route: ActivatedRoute) {
+    this.hiddenAlert = true
   }
 
   ngOnInit() {
     let id = this.getPathVariable()
-    console.log(id)
     this.booksService.getBook(id).subscribe(res => {
       if (res.body !== null) {
         this.booksDTO = res.body!
-        console.log(this.booksDTO)
+        this.booksService.increaseViewCount(id).subscribe()
         this.booksDTO = this.imageService.getImageByBook(this.booksDTO)
       }
     })
-
   }
-
 
   getPathVariable(): number {
     return Number(this.route.snapshot.paramMap.get("id"));
   }
 
-  buy(bookDTO: IBookDTO) {
-    const book: IBook = bookDTO
+  buy(bookId: number) {
+    this.userPurchasesService.buyBooks(bookId).subscribe()
+    this.hiddenAlert = false
+  }
+
+  closeAlert() {
+    this.hiddenAlert = true;
   }
 }

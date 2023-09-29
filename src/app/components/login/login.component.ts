@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IUsers, Users} from "../../models/User-model";
 import {UserService} from "../../services/user-service/user.service";
 import {Router} from "@angular/router";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {Router} from "@angular/router";
 export class LoginComponent {
   user?: IUsers = new Users()
 
-  constructor(private userService: UserService, protected router: Router) {
+  constructor(private userService: UserService, protected router: Router, private appComponent: AppComponent) {
   }
 
   onSubmit(data: {
@@ -23,7 +24,8 @@ export class LoginComponent {
     this.userService.login(this.user!).subscribe(res => {
       if (res.body?.token != null) {
         window.localStorage.setItem("token", res.body.token!)
-        this.router.navigate(['/books']).then()
+        this.appComponent.ngOnInit()
+        this.router.navigate(['']).then()
       }
     })
   }

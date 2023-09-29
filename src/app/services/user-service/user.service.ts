@@ -22,4 +22,8 @@ export class UserService {
   login(user: IUsers): Observable<HttpResponse<IAuthResponse>> {
       return this.http.post(endPoint + '/authenticate', user, {observe: 'response'})
   }
+
+  logout() {
+    return this.http.post(endPoint + '/logout', {observe: 'response'})
+  }
 }

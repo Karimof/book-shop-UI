@@ -17,8 +17,7 @@ export class UserPurchasesService {
 
   constructor(public http: HttpClient) {
   }
-  //todo -------
-  getAllPrices(): Observable<HttpResponse<IUserPurchases>> {
-    return this.http.get(endPoint, {observe: 'response', headers: this.headers})
+  buyBooks(bookId: number): Observable<HttpResponse<IUserPurchases>> {
+    return this.http.post(endPoint + '/buy', bookId, {observe: 'response', headers: this.headers})
   }
 }

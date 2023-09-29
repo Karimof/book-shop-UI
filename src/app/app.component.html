@@ -1,2 +1,27 @@
+<div class="container" style="padding: 20px">
+  <div class="row">
+    <div class="col-5">
+      <a href="/books" type="button" class="btn btn-outline-secondary">Books</a>
+    </div>
+    <div class="col-2">
+
+    </div>
+    <div class="col-5">
+      <div class="row" [hidden]="hidden">
+        <div class="col-4"></div>
+        <div class="col-4" style="text-align: right">
+          <a href="/login" type="button" class="btn btn-primary">Sign In</a>
+        </div>
+        <div class="col-4" style="text-align: right">
+          <a href="/register" type="button" class="btn btn-success">Sign Up</a>
+        </div>
+      </div>
+      <div class="row" [hidden]="!hidden">
+        <a type="button" class="btn btn-outline-dark" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
 

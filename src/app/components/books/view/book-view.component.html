@@ -9,10 +9,14 @@
   }
 </style>
 <div class="container" align="center">
+  <div class="alert alert-success alert-dismissible" [hidden]="hiddenAlert">
+    <a type="button" class="btn btn-outline-success" (click)="closeAlert()" style="padding:0 5px 0 5px; margin: 5px">&times;</a>
+    <strong>Success!</strong> You have bought the book.
+  </div>
   <div class="row">
     <div class="col-4"></div>
     <div class="col-4">
-      <div><img [src]="booksDTO!.image" height="500px"></div>
+      <div><img [src]="booksDTO!.image" height="400px"></div>
       <div>
         <span>Name: {{booksDTO!.name}}</span>
         <span>Author: {{booksDTO!.author!.name}}</span>
@@ -21,7 +25,7 @@
         <span>Share: {{booksDTO!.createdAt | date: 'dd-mm-yyyy'}}</span>
         <span>View: {{booksDTO!.viewCount}}</span>
       </div>
-      <button class="btn btn-primary" (click)="buy(booksDTO!)">Buy:  {{booksDTO?.price}} UZS</button>
+      <button class="btn btn-primary" (click)="buy(booksDTO!.id!)">Buy: {{booksDTO?.price}} UZS</button>
     </div>
     <div class="col-4"></div>
   </div>
