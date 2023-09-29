@@ -1,22 +1,24 @@
 import {IAuthor} from "./Author-model";
 
-export interface IBook {
+export interface IBookDTO {
   id?: number;
   name?: string;
   author?: IAuthor;
   createdAt?: string;
   viewCount?: string;
   image?: any;
+  price?: number
 }
 
-export class Book implements IBook {
+export class BookDTO implements IBookDTO {
   constructor(
     id?: number,
     name?: string,
     author?: IAuthor,
     createdAt?: string,
     viewCount?: string,
-    image?: any
+    image?: any,
+    price?: number
   ) {
   }
 }

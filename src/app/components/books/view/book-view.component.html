@@ -1,0 +1,28 @@
+<style>
+  span {
+    padding: 20px
+  }
+
+  button {
+    width: 100%;
+    padding: 10px
+  }
+</style>
+<div class="container" align="center">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div><img [src]="booksDTO!.image" height="500px"></div>
+      <div>
+        <span>Name: {{booksDTO!.name}}</span>
+        <span>Author: {{booksDTO!.author!.name}}</span>
+      </div>
+      <div>
+        <span>Share: {{booksDTO!.createdAt | date: 'dd-mm-yyyy'}}</span>
+        <span>View: {{booksDTO!.viewCount}}</span>
+      </div>
+      <button class="btn btn-primary" (click)="buy(booksDTO!)">Buy:  {{booksDTO?.price}} UZS</button>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
