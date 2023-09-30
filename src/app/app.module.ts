@@ -10,12 +10,9 @@ import {RegisterComponent} from './components/register/register.component';
 import {NgbModule,} from "@ng-bootstrap/ng-bootstrap";
 import {BooksComponent} from './components/books/list/books.component';
 import {AuthorComponent} from './components/author/author.component';
-import {CommentsComponent} from './components/comments/comments.component';
 import {PriceComponent} from './components/price/price.component';
 import {CommonModule, NgFor} from "@angular/common";
 import {BookViewComponent} from './components/books/view/book-view.component';
-
-// import {TokenInterceptorService} from "./services/token/token-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +21,6 @@ import {BookViewComponent} from './components/books/view/book-view.component';
     RegisterComponent,
     BooksComponent,
     AuthorComponent,
-    CommentsComponent,
     PriceComponent,
     BookViewComponent,
   ],

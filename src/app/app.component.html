@@ -16,8 +16,12 @@
           <a href="/register" type="button" class="btn btn-success">Sign Up</a>
         </div>
       </div>
-      <div class="row" [hidden]="!hidden">
-        <a type="button" class="btn btn-outline-dark" (click)="logout()">Logout</a>
+      <div class="row" [hidden]="!hidden" style="text-align: right">
+        <div class="col-8">
+        </div>
+        <div class="col-4">
+          <a type="button" class="btn btn-dark" (click)="logout()">Logout</a>
+        </div>
       </div>
     </div>
   </div>

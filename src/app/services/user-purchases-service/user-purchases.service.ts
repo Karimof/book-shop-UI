@@ -17,6 +17,7 @@ export class UserPurchasesService {
 
   constructor(public http: HttpClient) {
   }
+
   buyBooks(bookId: number): Observable<HttpResponse<IUserPurchases>> {
     return this.http.post(endPoint + '/buy', bookId, {observe: 'response', headers: this.headers})
   }

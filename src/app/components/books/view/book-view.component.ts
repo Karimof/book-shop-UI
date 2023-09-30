@@ -4,8 +4,9 @@ import {BooksService} from "../../../services/books-service/books.service";
 import {ImageService} from "../../../services/image-service/image.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute,} from "@angular/router";
-import {IBook} from "../../../models/Books-model";
 import {UserPurchasesService} from "../../../services/user-purchases-service/user-purchases.service";
+import {IComments} from "../../../models/Comments-model";
+import {CommentsService} from "../../../services/comments-servise/comments.service";
 
 @Component({
   selector: 'app-book-view',
@@ -15,14 +16,17 @@ import {UserPurchasesService} from "../../../services/user-purchases-service/use
 export class BookViewComponent {
 
   booksDTO?: IBookDTO
-  book?: IBook
+  comments?: IComments[]
   hiddenAlert: boolean
 
-  constructor(protected booksService: BooksService,
-              protected imageService: ImageService,
-              protected userPurchasesService: UserPurchasesService,
-              private sanitizer: DomSanitizer,
-              private route: ActivatedRoute) {
+  constructor(
+    protected purchasesService: UserPurchasesService,
+    protected commentsService: CommentsService,
+    protected booksService: BooksService,
+    protected imageService: ImageService,
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute
+  ) {
     this.hiddenAlert = true
   }
 
@@ -33,6 +37,7 @@ export class BookViewComponent {
         this.booksDTO = res.body!
         this.booksService.increaseViewCount(id).subscribe()
         this.booksDTO = this.imageService.getImageByBook(this.booksDTO)
+        this.getAllComments()
       }
     })
   }
@@ -42,11 +47,30 @@ export class BookViewComponent {
   }
 
   buy(bookId: number) {
-    this.userPurchasesService.buyBooks(bookId).subscribe()
+    this.purchasesService.buyBooks(bookId).subscribe()
     this.hiddenAlert = false
   }
 
   closeAlert() {
     this.hiddenAlert = true;
+  }
+
+  getAllComments() {
+    this.commentsService.getAllBookComments(this.booksDTO?.id!).subscribe(res => {
+      if (res.body != null) {
+        this.comments = res.body
+      }
+    })
+  }
+
+  onSubmit(data: { content: string }) {
+    let commentVM = {bookId: this.booksDTO!.id, content: data.content}
+    this.commentsService.sendComment(commentVM).subscribe(res => {
+      if (res.body != null) {
+        this.comments = res.body
+        let elementById = document.getElementById('content');
+        elementById!.innerText = ''
+      }
+    })
   }
 }

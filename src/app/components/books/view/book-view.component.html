@@ -7,6 +7,64 @@
     width: 100%;
     padding: 10px
   }
+
+  .commentWindow {
+    border: 1px solid black;
+    border-radius: 10px 10px 10px 0;
+    padding: 10px
+  }
+
+  body {
+    margin-top: 20px;
+  }
+
+  .chat-online {
+    color: #34ce57
+  }
+
+  .chat-offline {
+    color: #e4606d
+  }
+
+  .chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+  }
+
+  .chat-message-left,
+  .chat-message-right {
+    display: flex;
+    flex-shrink: 0
+  }
+
+  .chat-message-left {
+    margin-right: auto
+  }
+
+  .chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+  }
+
+  .py-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .px-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+  }
+
+  .flex-grow-0 {
+    flex-grow: 0 !important;
+  }
+
+  .border-top {
+    border-top: 1px solid #dee2e6 !important;
+  }
 </style>
 <div class="container" align="center">
   <div class="alert alert-success alert-dismissible" [hidden]="hiddenAlert">
@@ -27,6 +85,71 @@
       </div>
       <button class="btn btn-primary" (click)="buy(booksDTO!.id!)">Buy: {{booksDTO?.price}} UZS</button>
     </div>
-    <div class="col-4"></div>
+    <!--    <div class="col-4  commentWindow" style="padding: 32px; display: flex;-->
+    <!--    flex-direction: column;-->
+    <!--    max-height: 800px;-->
+    <!--    overflow-y: scroll">-->
+    <!--      <div *ngFor="let comment of comments" class="row" style="padding: 10px;">-->
+    <!--        <div class="col-2">-->
+    <!--          <span class="bi bi-person" style="font-size: 25pt; padding: 0 !important;"></span>-->
+    <!--        </div>-->
+    <!--        <div class="col-10" style="background-color: #d7d7d7;border-radius: 10px; text-align: left">-->
+    <!--          <p>-->
+    <!--            {{comment.content}}-->
+    <!--          </p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--    <div class="row">-->
+    <!--      <div class="col-8"></div>-->
+    <!--      <div class="col-4">-->
+    <!--        <form #editFrom="ngForm" (ngSubmit)="onSubmit(editFrom.value)" style="padding-left: 15px">-->
+    <!--          <div class="row">-->
+    <!--            <div class="col-9" style="padding: 0">-->
+    <!--              <textarea name="content" id="content" ngModel style="width: 100%; height: 100%"></textarea>-->
+    <!--            </div>-->
+    <!--            <div class="col-3">-->
+    <!--              <button type="submit" class="btn btn-primary" style="width: 100%; height: 100%">-->
+    <!--                Send-->
+    <!--              </button>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </form>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <div class="col-4">
+      <main class="content">
+        <div class="card">
+          <div class="row g-0">
+            <div class="col-12">
+              <div class="position-relative">
+                <div class="chat-messages p-4" style="max-height: 400px">
+                  <div class="chat-message-left pb-4" style="margin: 0 0 0 0 !important;"
+                       *ngFor="let comment of comments">
+                    <div>
+                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
+                           alt="Sharon Lessman" width="40" height="40">
+                      <div class="text-muted small text-nowrap mt-2">{{comment.createdAt | date: 'dd-MM-yyyy'}}</div>
+                    </div>
+                    <div class="flex-shrink-1 bg-light rounded" style="width: -webkit-fill-available;">
+                      <div class="" align="left">Sharon Lessman</div>
+                      <h6 align="left">{{comment.content}}</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <form #editFrom="ngForm" (ngSubmit)="onSubmit(editFrom.value)" style="padding-left: 15px">
+                <div class="flex-grow-0 py-3 px-4 border-top">
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="content" id="content" placeholder="Type your message" ngModel>
+                    <button class="btn btn-primary">Send</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   </div>
 </div>

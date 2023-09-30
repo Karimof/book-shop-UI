@@ -16,8 +16,15 @@ export class CommentsService {
 
   constructor(public http: HttpClient) {
   }
-  //todo -------
-  getAllComments(): Observable<HttpResponse<IComments>> {
-    return this.http.get(endPoint, {observe: 'response', headers: this.headers})
+
+  getAllBookComments(id: number): Observable<HttpResponse<IComments[]>> {
+    return this.http.get<IComments[]>(endPoint + '/book/' + id, {observe: 'response', headers: this.headers})
+  }
+
+  sendComment(commentVM: any): Observable<HttpResponse<IComments[]>> {
+    return this.http.post<IComments[]>(endPoint + '/content', commentVM, {
+      observe: 'response',
+      headers: this.headers
+    })
   }
 }
