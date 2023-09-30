@@ -3,6 +3,7 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IUsers} from "../../models/User-model";
 import {IAuthResponse} from "../../models/Auth-response-model";
+import {IRegisterRequest} from "../../models/Register-request";
 
 const endPoint = 'http://localhost:9094/api/v1/auth'
 
@@ -15,8 +16,8 @@ export class UserService {
   constructor(protected http: HttpClient) {
   }
 
-  register(user: IUsers): Observable<HttpResponse<IUsers>> {
-    return this.http.post(endPoint + '/register', user, {observe: 'response'})
+  register(registerRequest: IRegisterRequest): Observable<HttpResponse<IAuthResponse>> {
+    return this.http.post(endPoint + '/register', registerRequest, {observe: 'response'})
   }
 
   login(user: IUsers): Observable<HttpResponse<IAuthResponse>> {

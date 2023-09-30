@@ -25,7 +25,7 @@ export class LoginComponent {
       if (res.body?.token != null) {
         window.localStorage.setItem("token", res.body.token!)
         this.appComponent.ngOnInit()
-        this.router.navigate(['']).then()
+        this.router.navigate(['/']).then()
       }
     })
   }

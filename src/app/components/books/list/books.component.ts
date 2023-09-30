@@ -22,7 +22,6 @@ export class BooksComponent {
         this.booksDTO = res.body
         for (let book of this.booksDTO!) {
           book = this.imageService.getImageByBook(book)
-          console.log(book)
         }
       }
     })

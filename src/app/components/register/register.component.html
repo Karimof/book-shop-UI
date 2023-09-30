@@ -2,6 +2,11 @@
   <form #editFrom="ngForm" (ngSubmit)="onSubmit(editFrom.value)" ngNativeValidate
         style="border: 1px solid black; width: 250px; padding:20px; margin-top: 12%">
     <p>Sing Up</p>
+    <label for="role">Choose register type</label>
+    <select [(ngModel)]="selected" name="role" id="role" style="padding: 5px; margin: 10px; border-radius: 20px" ngModel>
+      <option value="USER" selected>User</option>
+      <option value="AUTHOR">Author</option>
+    </select>
     <input type="text" placeholder="Name" name="name" style="padding: 10px" ngModel><br><br>
     <input type="text" placeholder="Login" name="login" style="padding: 10px" ngModel><br><br>
     <input type="password" placeholder="Password" name="password" style="padding: 10px" ngModel>

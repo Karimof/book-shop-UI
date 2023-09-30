@@ -20,7 +20,6 @@ export class AppComponent {
       this.token = window.localStorage.getItem("token")!
       this.hidden = true;
     }
-    console.log(this.hidden)
   }
 
   logout() {
