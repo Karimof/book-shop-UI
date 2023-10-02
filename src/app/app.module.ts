@@ -13,6 +13,7 @@ import {AuthorComponent} from './components/author/author.component';
 import {PriceComponent} from './components/price/price.component';
 import {CommonModule, NgFor} from "@angular/common";
 import {BookViewComponent} from './components/books/view/book-view.component';
+import {ErrorComponent} from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {BookViewComponent} from './components/books/view/book-view.component';
     AuthorComponent,
     PriceComponent,
     BookViewComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,53 @@
-<p>author works!</p>
+<style>
+  .center {
+    margin-top: 30px
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="row" *ngFor="let book of  books" style="border: 1px solid black">
+        <div class="col-3">
+          <img [src]="book.image" width="100px">
+        </div>
+        <div class="col-2">
+          <p class="center">{{book.name}}</p>
+        </div>
+        <div class="col-2">
+          <p class="center"><span class="bi bi-calendar"></span>&nbsp; {{book.createdAt | date: 'dd-mm-yyyy'}}</p>
+        </div>
+        <div class="col-2">
+          <p class="center"><span class="bi bi-eye"></span>&nbsp; {{book.viewCount}}</p>
+        </div>
+        <div class="col-3">
+          <p class="center"><span class="bi bi-cash-coin"></span>&nbsp; {{book.price}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div style="margin: 10px;border: 3px solid green">
+        <h2> Create Book</h2>
+        <div>
+          <form #editFrom="ngForm" (ngSubmit)="onSubmit(editFrom.value)" ngNativeValidate enctype="multipart/form-data">
+            <table>
+              <tr>
+                <img [src]="url" height="200px"><br>
+                <input type="file" (change)="onSelectFile($event)" accept="image/png, image/jpeg">
+              </tr>
+              <tr>
+                <input type="text" name="name" placeholder="Book name.." ngModel>
+              </tr>
+              <tr>
+              <tr>
+                <input type="number" name="price" placeholder="Book price.." ngModel>
+              </tr>
+              <tr>
+                <button type="submit" style="margin:10px;" class="btn btn-primary">Create</button>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

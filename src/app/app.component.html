@@ -1,7 +1,9 @@
 <div class="container" style="padding: 20px">
   <div class="row">
     <div class="col-5">
-      <a href="/books" type="button" class="btn btn-outline-secondary">Books</a>
+      <a href="/books" type="button" class="btn btn-outline-secondary" *ngIf="role == 'USER'">Books</a>
+      <a href="/author" type="button" class="btn btn-outline-secondary" *ngIf="role == 'AUTHOR'">Author page</a>
+      <a href="/admin" type="button" class="btn btn-outline-secondary"  *ngIf="role == 'ADMIN'">Admin panel</a>
     </div>
     <div class="col-2">
 

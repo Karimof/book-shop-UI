@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {UserService} from "./services/user-service/user.service";
 import {Router} from "@angular/router";
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent {
   title = 'book-shop-UI';
   token?: string = ''
   hidden: boolean = false
+  role?: string | null
 
   constructor(protected userService: UserService, private router: Router) {
   }
@@ -19,6 +21,9 @@ export class AppComponent {
     if (window.localStorage.getItem("token") != '') {
       this.token = window.localStorage.getItem("token")!
       this.hidden = true;
+      this.role = new JwtHelperService()?.decodeToken(this.token).role;
+    } else {
+      this.role = null;
     }
   }
 
@@ -28,7 +33,7 @@ export class AppComponent {
       this.token = ''
       this.hidden = false
       window.localStorage.setItem("token", '')
-      this.router.navigate(['/']).then()
+      this.ngOnInit()
     })
   }
 }

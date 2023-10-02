@@ -5,13 +5,15 @@ import {LoginComponent} from "./components/login/login.component";
 import {BooksComponent} from "./components/books/list/books.component";
 import {AuthorComponent} from "./components/author/author.component";
 import {BookViewComponent} from "./components/books/view/book-view.component";
+import {ErrorComponent} from "./components/error/error.component";
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "books", component: BooksComponent},
   {path: "author", component: AuthorComponent},
-  {path: "book-view/:id", component: BookViewComponent}
+  {path: "book-view/:id", component: BookViewComponent},
+  {path: "error", component: ErrorComponent}
 ];
 
 @NgModule({
