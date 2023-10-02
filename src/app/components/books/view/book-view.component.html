@@ -86,7 +86,7 @@
                   </div>
                 </div>
               </div>
-              <form #editFrom="ngForm" (ngSubmit)="onSubmit(editFrom.value)" style="padding-left: 15px">
+              <form #editFrom="ngForm" (ngSubmit)="sendComment(editFrom.value)" style="padding-left: 15px">
                 <div class="flex-grow-0 py-3 px-4 border-top">
                   <div class="input-group">
                     <input type="text" class="form-control" name="content" id="content" placeholder="Type your message" ngModel>

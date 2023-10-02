@@ -14,6 +14,7 @@ import {PriceComponent} from './components/price/price.component';
 import {CommonModule, NgFor} from "@angular/common";
 import {BookViewComponent} from './components/books/view/book-view.component';
 import {ErrorComponent} from './components/error/error.component';
+import {AdminHomeComponent} from './components/admin/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ErrorComponent} from './components/error/error.component';
     PriceComponent,
     BookViewComponent,
     ErrorComponent,
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,

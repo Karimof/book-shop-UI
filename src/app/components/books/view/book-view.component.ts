@@ -30,12 +30,14 @@ export class BookViewComponent {
     this.hiddenAlert = true
   }
 
-  ngOnInit() {
+  ngOnInit(withoutRefresh: boolean) {
     let id = this.getPathVariable()
     this.booksService.getBook(id).subscribe(res => {
       if (res.body !== null) {
         this.booksDTO = res.body!
-        this.booksService.increaseViewCount(id).subscribe()
+        if (!withoutRefresh){
+          this.booksService.increaseViewCount(id).subscribe()
+        }
         this.booksDTO = this.imageService.getImageByBook(this.booksDTO)
         this.getAllComments()
       }
@@ -63,14 +65,12 @@ export class BookViewComponent {
     })
   }
 
-  onSubmit(data: { content: string }) {
+  sendComment(data: { content: string }) {
     let commentVM = {bookId: this.booksDTO!.id, content: data.content}
-    this.commentsService.sendComment(commentVM).subscribe(res => {
-      if (res.body != null) {
-        this.comments = res.body
-        let elementById = document.getElementById('content');
-        elementById!.innerText = ''
-      }
-    })
+    this.commentsService.sendComment(commentVM).subscribe()
+    let elementById = document.getElementById('content');
+    elementById!.innerText = ''
+    this.getAllComments()
+    this.ngOnInit(true)
   }
 }

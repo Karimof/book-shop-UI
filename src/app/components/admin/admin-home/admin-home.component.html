@@ -1,0 +1,64 @@
+<style>
+  th, td {
+    padding: 10px;
+    text-align: center;
+  }
+</style>
+<div class="container">
+  <div class="row" style="text-align: center">
+    <div class="col-3" style="border: 1px solid black;">
+      <h5 class="text-center">Last week registered users</h5>
+      <table style=" margin-left: 80px;" align="center">
+        <thead>
+        <th> Id</th>
+        <th> Login</th>
+        </thead>
+        <tr *ngFor="let user of weekUsers">
+          <td>{{user.id}}</td>
+          <td>{{user.login}}</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-9" style="padding: 20px; border: 1px solid black">
+      <h5 class="text-center">Top active users</h5>
+      <div class="row" style="justify-content: center;">
+        <div class="col-6" style="border: 1px solid black; padding: 20px">
+          <table class="table-striped text-center">
+            <th>№</th>
+            <th>User Id</th>
+            <th>All books price</th>
+            <th>Count of books</th>
+            <th>Comments</th>
+            <tr *ngFor="let item of activeUsers; index as i">
+              <td>{{i+1}}</td>
+              <td>{{item[0]}}</td>
+              <td>{{item[1]}}</td>
+              <td>{{item[2]}}</td>
+              <td>{{item[3]}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <h5 align="center">Users registered cound by month</h5>
+  <div class="row">
+    Month:<br>
+    registered users:
+    <div class="col-1" *ngFor="let date of monthUsersCount">
+      <div class="text-center">{{date[0] + '-' + date[1]}}</div>
+      <div class="text-center">{{date[2]}}</div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div>
+
+  </div>
+</div>
