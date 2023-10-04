@@ -6,22 +6,26 @@
 </style>
 <div class="container">
   <div class="row" style="text-align: center">
-    <div class="col-3" style="border: 1px solid black;">
+    <div class="col-3">
       <h5 class="text-center">Last week registered users</h5>
-      <table style=" margin-left: 80px;" align="center">
-        <thead>
-        <th> Id</th>
-        <th> Login</th>
-        </thead>
-        <tr *ngFor="let user of weekUsers">
-          <td>{{user.id}}</td>
-          <td>{{user.login}}</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
+      <div class="row" style="justify-content: center;">
+        <div class="col-6" style="border: 1px solid black; padding: 20px">
+          <table>
+            <thead>
+            <th> Id</th>
+            <th> Login</th>
+            </thead>
+            <tr *ngFor="let user of weekUsers">
+              <td>{{user.id}}</td>
+              <td>{{user.login}}</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
-    <div class="col-9" style="padding: 20px; border: 1px solid black">
+    <div class="col-9">
       <h5 class="text-center">Top active users</h5>
       <div class="row" style="justify-content: center;">
         <div class="col-6" style="border: 1px solid black; padding: 20px">
@@ -32,7 +36,7 @@
             <th>Count of books</th>
             <th>Comments</th>
             <tr *ngFor="let item of activeUsers; index as i">
-              <td>{{i+1}}</td>
+              <td>{{i + 1}}</td>
               <td>{{item[0]}}</td>
               <td>{{item[1]}}</td>
               <td>{{item[2]}}</td>
@@ -44,21 +48,89 @@
     </div>
   </div>
   <br>
-  <hr>
   <br>
-  <h5 align="center">Users registered cound by month</h5>
-  <div class="row">
-    Month:<br>
-    registered users:
-    <div class="col-1" *ngFor="let date of monthUsersCount">
-      <div class="text-center">{{date[0] + '-' + date[1]}}</div>
-      <div class="text-center">{{date[2]}}</div>
+  <br>
+  <div style="border: 1px solid black; padding: 20px">
+
+    <h5 align="center">Users registered cound by month</h5>
+    <div class="row">
+      Month:<br>
+      registered users:
+      <div class="col-1" *ngFor="let date of monthUsersCount">
+        <div class="text-center">{{date[0] + '-' + date[1]}}</div>
+        <div class="text-center">{{date[2]}}</div>
+      </div>
     </div>
   </div>
   <br>
   <hr>
   <br>
   <div>
-
+    <div class="col-12" style="padding: 20px;">
+      <h5 class="text-center">Famous Books</h5>
+      <div class="row" style="justify-content: center;">
+        <div class="col-6" style="border: 1px solid black; padding: 20px">
+          <table class="table-striped" align="center">
+            <th>№</th>
+            <th>Book Id</th>
+            <th>Name</th>
+            <th>Sold</th>
+            <th>Comments</th>
+            <th>Views</th>
+            <tr *ngFor="let famousBook of famousBooks; index as i">
+              <td>{{i + 1}}</td>
+              <td>{{famousBook.id}}</td>
+              <td>{{famousBook.name}}</td>
+              <td>{{famousBook.buy}}</td>
+              <td>{{famousBook.comment}}</td>
+              <td>{{famousBook.view}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div class="col-12" style="padding: 20px;">
+    <h5 class="text-center">Active Authors</h5>
+    <div class="row" style="justify-content: center;">
+      <div class="col-6" style="border: 1px solid black; padding: 20px">
+        <table class="table-striped" align="center">
+          <th>№</th>
+          <th>Author Id</th>
+          <th>Name</th>
+          <th>Sold Books</th>
+          <tr *ngFor="let activeAuthor of activeAuthors; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{activeAuthor.id}}</td>
+            <td>{{activeAuthor.name}}</td>
+            <td>{{activeAuthor.booksCount}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="col-12" style="padding: 20px;">
+    <h5 class="text-center">Authors's Earned</h5>
+    <div class="row" style="justify-content: center;">
+      <div class="col-6" style="border: 1px solid black; padding: 20px">
+        <table class="table-striped" align="center">
+          <th>№</th>
+          <th>Author Id</th>
+          <th>Name</th>
+          <th>Earned all</th>
+          <tr *ngFor="let earned of earnedAuthors; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{earned.id}}</td>
+            <td>{{earned.name}}</td>
+            <td>{{earned.earnedTotal}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
